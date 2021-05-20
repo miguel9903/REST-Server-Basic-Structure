@@ -5,7 +5,7 @@ const controller = {
         const queryParams = req.query;
         const { query, apiKey, page = 1, limit } = req.query;
         res.json({
-            message: 'GET All Users',
+            message: 'Get All Users',
             queryParams: queryParams,
             query,
             apiKey,
@@ -15,8 +15,10 @@ const controller = {
     },
 
     getUser: (req, res) => {
+        const { id } = req.params;
         res.json({
-            message: 'GET Single User'
+            message: 'Get User With ID ' + id,
+            id
         });
     },
 
@@ -27,9 +29,9 @@ const controller = {
                     "edad": 28
                 }
         */
-        const { nombre, edad } = req.bod
+        const { nombre, edad } = req.body;
         res.json({
-            message: 'CREATE User',
+            message: 'Create User',
             nombre,
             edad
         });
@@ -37,22 +39,23 @@ const controller = {
 
     updateUser: (req, res) => {
         // Ej:  http://localhost:8080/api/users/10
-        const id = req.params.id;
+        const { id } = req.params;
         res.json({
-            message: 'UPDATE User',
+            message: 'Update User With ID ' + id,
             id
         });
     },
 
     updateInfoUser: (req, res) => {
         res.json({
-            message: 'UPDATE Info User'
+            message: 'Update Info User'
         });
     },
 
     deleteUser: (req, res) => {
+        const { id } = req.params;
         res.json({
-            message: 'DELETE User'
+            message: 'Delete User With ID ' + id
         });
     }
 
